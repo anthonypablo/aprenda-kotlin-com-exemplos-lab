@@ -10,16 +10,6 @@ data class Formacao(val nome: String, val nivel: Nivel)
 
 fun main() {
 
-//Definições de Níveis
-
-    var nivel: Nivel? = null
-    val mensagem = when (nivel) {
-        Nivel.BASICO -> "Básico"
-        Nivel.INTERMEDIARIO -> "Intermediário"
-        Nivel.AVANCADO -> "Avançado"
-        null -> "Nível não definido"
-    }
-
 //Definições dos Conteúdos Educacionais
 
     val conteudoKotlin = ConteudoEducacional(
@@ -97,22 +87,20 @@ fun main() {
             Formacao(nome = "Curso de Python", nivel = Nivel.AVANCADO)
     )
 
-
+//Definições de Nível
 
     for (iteracao in formacaoKotlin) {
-        val mensagem = when (iteracao.nivel) {
+        val atribNivel = when (iteracao.nivel) {
             Nivel.BASICO -> "Básico"
             Nivel.INTERMEDIARIO -> "Intermediário"
             Nivel.AVANCADO -> "Avançado"
             null -> "Nível não definido"
         }
-
-        println("${iteracao.nome} $mensagem | ${cargaHorariaKotlinBasico} horas \n")
-
+        println("--- ${iteracao.nome} $atribNivel | ${cargaHorariaKotlinBasico} horas --- \n")
         val resultado = ""
         for ((index, aula) in conteudoKotlin.nome.withIndex()) {
-            val duracao = conteudoKotlin.duracao[index]
-            println("$aula | $duracao horas")
+            val duracaoTotal = conteudoKotlin.duracao[index]
+            println("$aula | $duracaoTotal horas")
         }
     }
 }
