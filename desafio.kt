@@ -87,8 +87,7 @@ fun main() {
             Formacao(nome = "Curso de Python", nivel = Nivel.AVANCADO)
     )
 
-//Definições de Nível
-
+//Atribuição de Nível Kotlin
     for (iteracao in formacaoKotlin) {
         val atribNivel = when (iteracao.nivel) {
             Nivel.BASICO -> "Básico"
@@ -96,11 +95,82 @@ fun main() {
             Nivel.AVANCADO -> "Avançado"
             null -> "Nível não definido"
         }
-        println("--- ${iteracao.nome} $atribNivel | ${cargaHorariaKotlinBasico} horas --- \n")
-        val resultado = ""
-        for ((index, aula) in conteudoKotlin.nome.withIndex()) {
+        val cargaHoraria = when (iteracao.nivel) {
+            Nivel.BASICO -> cargaHorariaKotlinBasico
+            Nivel.INTERMEDIARIO -> cargaHorariaKotlinIntermediario
+            Nivel.AVANCADO -> cargaHorariaKotlinAvancado
+            null -> 0
+        }
+        val selecaoAulas = when (iteracao.nivel) {
+            Nivel.BASICO -> conteudoKotlin.nome.subList(0, 3)
+            Nivel.INTERMEDIARIO -> conteudoKotlin.nome.subList(0, 5)
+            Nivel.AVANCADO -> conteudoKotlin.nome.subList(0, 10)
+        }
+
+        println("--- ${iteracao.nome} $atribNivel | ${cargaHoraria} horas --- \n")
+
+        for ((index, aula) in selecaoAulas.withIndex()) {
             val duracaoTotal = conteudoKotlin.duracao[index]
             println("$aula | $duracaoTotal horas")
         }
+        println()
+    }
+
+//Atribuição de Nível Java
+    for (iteracao in formacaoJava) {
+        val atribNivel = when (iteracao.nivel) {
+            Nivel.BASICO -> "Básico"
+            Nivel.INTERMEDIARIO -> "Intermediário"
+            Nivel.AVANCADO -> "Avançado"
+            null -> "Nível não definido"
+        }
+        val cargaHoraria = when (iteracao.nivel) {
+            Nivel.BASICO -> cargaHorariaJavaBasico
+            Nivel.INTERMEDIARIO -> cargaHorariaJavaIntermediario
+            Nivel.AVANCADO -> cargaHorariaJavaAvancado
+            null -> 0
+        }
+        val selecaoAulas = when (iteracao.nivel) {
+            Nivel.BASICO -> conteudoJava.nome.subList(0, 3)
+            Nivel.INTERMEDIARIO -> conteudoJava.nome.subList(0, 5)
+            Nivel.AVANCADO -> conteudoJava.nome.subList(0, 10)
+        }
+
+        println("--- ${iteracao.nome} $atribNivel | ${cargaHoraria} horas --- \n")
+
+        for ((index, aula) in selecaoAulas.withIndex()) {
+            val duracaoTotal = conteudoKotlin.duracao[index]
+            println("$aula | $duracaoTotal horas")
+        }
+        println()
+    }
+
+//Atribuição de Nível Python
+    for (iteracao in formacaoPython) {
+        val atribNivel = when (iteracao.nivel) {
+            Nivel.BASICO -> "Básico"
+            Nivel.INTERMEDIARIO -> "Intermediário"
+            Nivel.AVANCADO -> "Avançado"
+            null -> "Nível não definido"
+        }
+        val cargaHoraria = when (iteracao.nivel) {
+            Nivel.BASICO -> cargaHorariaPythonBasico
+            Nivel.INTERMEDIARIO -> cargaHorariaPythonIntermediario
+            Nivel.AVANCADO -> cargaHorariaPythonAvancado
+            null -> 0
+        }
+        val selecaoAulas = when (iteracao.nivel) {
+            Nivel.BASICO -> conteudoPython.nome.subList(0, 3)
+            Nivel.INTERMEDIARIO -> conteudoPython.nome.subList(0, 5)
+            Nivel.AVANCADO -> conteudoPython.nome.subList(0, 10)
+        }
+
+        println("--- ${iteracao.nome} $atribNivel | ${cargaHoraria} horas --- \n")
+
+        for ((index, aula) in selecaoAulas.withIndex()) {
+            val duracaoTotal = conteudoKotlin.duracao[index]
+            println("$aula | $duracaoTotal horas")
+        }
+        println()
     }
 }
