@@ -1,6 +1,17 @@
 // [Template no Kotlin Playground](https://pl.kotl.in/WcteahpyN)
 
-data class Usuario
+data class Usuario(val nome: String, val numeroMatricula: Int)
+
+fun matricular(usuario: Usuario) {
+    val nomeValido = usuario.nome.isNotBlank()
+    val matriculaValida = usuario.numeroMatricula > 0
+
+    if (nomeValido && matriculaValida) {
+        println("${usuario.nome} está devidamente matriculado sob o nº ${usuario.numeroMatricula}. Veja abaixo nossos cursos")
+    } else {
+        println("Faltam dados para completar a matrícula (nome: ${usuario.nome}, matrícula: ${usuario.numeroMatricula})")
+    }
+}
 
 enum class Nivel {BASICO,INTERMEDIARIO,AVANCADO}
 
@@ -9,6 +20,20 @@ data class ConteudoEducacional(val nome: List<String>, val duracao: List<Int>)
 data class Formacao(val nome: String, val nivel: Nivel)
 
 fun main() {
+
+//Matrícula
+
+    val inscritos = mutableListOf<Usuario>(
+                Usuario("João", 101010),
+                Usuario("Maria", 151515),
+                Usuario("", 2020202),
+                Usuario("Joaquina", 0)
+        )
+
+    for (inscrito in inscritos) {
+        matricular(inscrito)
+    }
+    println()
 
 //Definições dos Conteúdos Educacionais
 
@@ -173,4 +198,5 @@ fun main() {
         }
         println()
     }
+
 }
